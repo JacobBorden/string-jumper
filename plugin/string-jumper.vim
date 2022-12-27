@@ -4,7 +4,7 @@ function! StringJump(string)
 
 
 	runtime! expand.vim
-	let escaped_string = escape(a:string, '\'')
+	let escaped_string = escape(a:string, "\'")
 	let results = system('grep -R --color=always --line-number ' . escaped_string . ' .')
 
 	" Split the results into a list of lines
@@ -25,9 +25,10 @@ function! StringJump(string)
 	endfor
 
 	"Use fzf to select a match from the list
-	let selected = fzf#run(items, {'sink': "call setpos("'expand.fnameescape('.').'",[line("."), 0, 0, 0])'})
+	let selected = fzf#run(items, {'sink': "call setpos('" . expand.fnameescape('.') . "',[line('.'), 0, 0, 0])"})
 	"Jump to the selected match
 	if !empty(selected)
-		execute 'edit +'.selected[0].' '.selected[1]
+		execute 'edit +' . selected[0] . ' ' . selected[1]
 	endif
 endfunction
+
