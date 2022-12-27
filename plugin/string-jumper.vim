@@ -2,8 +2,8 @@ function! StringJump(string)
 
 	" Use grep to search for the thstring in the current directory and sub directories
 
-	runtime! expand.vim
-	let escaped_string = escape(a:string, "\'")
+	runtime! shell.vim
+	let escaped_string = shellescape(a:string)
 	let results = system('grep -R --color=always --line-number ' . escaped_string . ' .')
 
 	" Split the results into a list of lines
