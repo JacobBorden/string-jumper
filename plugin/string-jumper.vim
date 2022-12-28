@@ -12,8 +12,7 @@ function! StringJump(string)
 
 
 	"Filter out any lines that do not contain a file name and line number
-	let matches = filter(lines, "v:val =~ '\\^\\(\\.\/[^:]*\\):\\([^:]*\\):'")
-
+	 let matches = filter(lines, "v:val =~ '^\\(\\.\\/[^:]*\\):\\([^:]*\\):'")
 	"Extract the file name and line number from the matches
 	let items = []
 	for match in matches
