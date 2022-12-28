@@ -9,7 +9,7 @@ function! StringJump(string)
 	" Split the results into a list of lines
 
 	let lines = split(results, '\v')
-let matches = filter(lines, 'v:val =~'\v^\.\/([^:]*):([^:]*):'')
+	let matches = filter(lines, 'v:val =~'\v^\.\/([^:]*):([^:]*):'')
 
 	" Filter out any lines that do not contain a file name and line number
 	" Extract the file name and line number from the matches
