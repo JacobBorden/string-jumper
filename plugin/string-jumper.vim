@@ -11,9 +11,8 @@ function! StringJump(string)
 	let lines = split(results, '\v')
 
 
-	"Filter out any lines that do not contain a file name and line number
-	"let matches = filter(lines, 'v:val =~'^\\(\\.\\/[^:]*\\):\\([^:]*\\):'')
-	"Extract the file name and line number from the matches
+	" Filter out any lines that do not contain a file name and line number
+	" Extract the file name and line number from the matches
 	let items = []
 	for match in lines
 		let file = match[1]
@@ -21,9 +20,9 @@ function! StringJump(string)
 		call add(items, {'text': file.':'.line, 'value': file.':'.line.':0'})
 	endfor
 
-	"Use fzf to select a match from the list
+	" Use fzf to select a match from the list
 	let selected = fzf#run(items, {'sink': "call setpos('" . shellescape('.') . "',[line('.'), 0, 0, 0])"})
-	"Jump to the selected match
+	" Jump to the selected match
 	if !empty(selected)
 		execute 'edit +' . selected[0] . ' ' . selected[1]
 	endif
