@@ -11,8 +11,6 @@ function! StringJump(string)
 	let lines = split(results, '\v')
 	let matches = filter(lines, 'v:val =~"^\.\/\([^:]*\):\([^:]*\):"')
 
-	" Filter out any lines that do not contain a file name and line number
-	" Extract the file name and line number from the matches
 	let items = []
 	for match in matches
 		let file = match[1]
