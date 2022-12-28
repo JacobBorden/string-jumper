@@ -4,7 +4,7 @@ function! StringJump(string)
 
 	runtime! shell.vim
 	let escaped_string = shellescape(a:string)
-	let results = system('grep -R --color=always --line-number ' . escaped_string . ' .')
+	let results = system('grep -R --color=always --line-number ' . escaped_string . '.')
 
 	" Split the results into a list of lines
 
@@ -12,7 +12,7 @@ function! StringJump(string)
 
 
 	"Filter out any lines that do not contain a file name and line number
-	let matches = filter(lines, "v:val =~ ''")
+	let matches = filter(lines, 'v:val =~ '^\([^:]*\):\([^:]*\)' ')
 	"Extract the file name and line number from the matches
 	let items = []
 	for match in matches
