@@ -21,7 +21,7 @@ function! StringJump()
     endfor
 	
   " Use fzf to select a match from the list
-  let selected = fzf#run(items)
+  let selected = fzf#run(lines)
 
   " Jump to the selected match
   if !empty(selected)
