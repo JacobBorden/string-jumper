@@ -12,7 +12,7 @@ function! StringJump()
   " Iterate over the list of lines and extract the file name and line number from each line
   let items = []
   for line in lines
-	let matches = matchlist(line, '^\.\/\([^:]*\):\([^:]*\):')
+	let matches = matchlist(line, '^\.\/([^:]*):([^:]*):')
 	let file = matches[1]
 	let line_number = matches[2]
 	if !empty(file) && !empty(line_number)
