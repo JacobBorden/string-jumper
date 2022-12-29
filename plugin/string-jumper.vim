@@ -18,7 +18,7 @@ function! StringJump(search_string)
     endfor
 	
   " Use fzf to select a match from the list
-  let selected = fzf#run(items, {'sink': "call setpos('" . shellescape('.') . "',[line('.'),     0, 0, 0])"})
+  let selected = fzf#run(items)
 
   " Jump to the selected match
   if !empty(selected)
