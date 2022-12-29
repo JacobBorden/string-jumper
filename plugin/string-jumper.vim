@@ -10,6 +10,7 @@ function! StringJump(string)
 	let lines = split(results, '\n')
 	let matches = filter(lines, 'v:val =~"^\.\/[^:]*:[^:]*:"')
 	let items = []
+	echo matches
 	for match in lines
 		let file = match[1]
 		let line = match[2]
