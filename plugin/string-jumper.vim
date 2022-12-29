@@ -9,6 +9,7 @@ function! StringJump(string)
 
 	let lines = split(results, '\v')
 	let matches = filter(lines, 'v:val =~"^\.\/\([^:]*\):\([^:]*\):"')
+	echo lines
 	echo matches
 	let items = []
 	for match in matches
