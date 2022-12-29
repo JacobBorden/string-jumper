@@ -8,7 +8,7 @@ function! StringJump(string)
 	" Split the results into a list of lines
 
 	let lines = split(results, '\n')
-	let matches = filter(lines, 'v:val =~"^\.\/\([^:]*\):\([^:]*\):"')
+	let matches = filter(lines, 'v:val =~"^\\.\\/\\([^:]*\\):\\([^:]*\\):"')
 	echo matches
 	let items = []
 	for match in matches
