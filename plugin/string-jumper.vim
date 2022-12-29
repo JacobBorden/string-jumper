@@ -12,10 +12,10 @@ function! StringJump(search_string)
   for line in lines
     let file = matchstr(line, '^\.\/\([^:]*\):')
     let line_number = matchstr(line, ':\([^:]*\):')
-    echo line_number
     call add(items, {'text': file.':'.line_number, 'value': file.':'.line_number.':0'})
   endfor
-
+	
+  echo items
   " Use fzf to select a match from the list
   let selected = fzf#run(items)
 
