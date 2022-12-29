@@ -15,7 +15,7 @@ function! StringJump(string)
 		let line = match[2]
 		call add(items, {'text': file.':'.line, 'value': file.':'.line.':0'})
 	endfor
-
+	echo items
 	" Use fzf to select a match from the list
 	let selected = fzf#run(items, {'sink': "call setpos('" . shellescape('.') . "',[line('.'),     0, 0, 0])"})
 	" Jump to the selected match
