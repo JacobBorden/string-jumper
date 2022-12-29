@@ -3,7 +3,7 @@ function! StringJump()
   runtime! shell.vim
   let search_string = input("Enter search string: ")
   call feedkeys(search_string . "\<CR>", 'n')
-  let escaped_string = shellescape(a:search_string)
+  let escaped_string = shellescape(search_string)
   let results = system('grep -R --color=always --line-number ' . escaped_string . ' . ')
 
   " Split the results into a list of lines
