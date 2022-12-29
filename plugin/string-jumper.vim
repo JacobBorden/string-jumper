@@ -21,4 +21,4 @@ function! StringJump()
 
   " Jump to the selected line in the file
   execute 'edit +' . line_number . ' ' . file
-endfunctionG
+endfunction
