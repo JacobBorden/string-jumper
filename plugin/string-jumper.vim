@@ -1,6 +1,8 @@
-function! StringJump(search_string)
+function! StringJump()
   " Use grep to search for the search string in the current directory and sub directories
   runtime! shell.vim
+  let search_string = input("Enter search string: ")
+  call feedkeys(search_string . "\<CR>", 'n')
   let escaped_string = shellescape(a:search_string)
   let results = system('grep -R --color=always --line-number ' . escaped_string . ' . ')
 
