@@ -14,7 +14,7 @@ function! StringJump()
   for line in lines
     let file = matchstr(line, '^\.\/\([^:]*\):')
     let line_number = matchstr(line, ':\([^:]*\):')
-    if !empty(file) && !empty(line)
+    if !empty(file) && !empty(line_number)
 	    call add(items, {'text': file.':'.line_number, 'value': file.':'.line_number.':0'})
     endif
     endfor
