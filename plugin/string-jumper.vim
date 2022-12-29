@@ -4,13 +4,12 @@ function! StringJump(string)
 
 	runtime! shell.vim
 	let escaped_string = shellescape(a:string)
-	let results = system('grep -R --color=always --line-number ' . escaped_string . '.')
+	let results = system('grep -R --color=always --line-number ' . escaped_string . ' . ')
 	" Split the results into a list of lines
 
-	let lines = split(results, '\v')
-	let matches = filter(lines, 'v:val =~"^\.\/\([^:]*\):\([^:]*\):"')
+	let lines = split(results, '\n')
 	echo lines
-	echo matches
+	let matches = filter(lines, 'v:val =~"^\.\/\([^:]*\):\([^:]*\):"')
 	let items = []
 	for match in matches
 		let file = match[1]
