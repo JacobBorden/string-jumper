@@ -8,7 +8,7 @@ function! StringJump(string)
 	" Split the results into a list of lines
 
 	let lines = split(results, '\n')
-	let matches = filter(lines, 'v:val =~"^\.\/\([^:]*\):\([^:]*\):"')
+	let matches = filter(lines, 'v:val =~"^\.\/[^:]*:[^:]*:"')
 	let items = []
 	for match in lines
 		let file = match[1]
@@ -17,7 +17,7 @@ function! StringJump(string)
 	endfor
 
 	" Use fzf to select a match from the list
-
+	let selected = fzf#run(items, {'sink': "call setpos('" . shellescape('.') . "',[line('.'),     0, 0, 0])"})
 	" Jump to the selected match
 	if !empty(selected)
 		execute 'edit +' . selected[0] . ' ' . selected[1]
