@@ -15,9 +15,8 @@ function! StringJump(search_string)
     call add(items, {'text': file.':'.line_number, 'value': file.':'.line_number.':0'})
   endfor
 	
-  echo items
   " Use fzf to select a match from the list
-  let selected = fzf#run(items)
+  let selected = fzf#run(items, {'sink': "call setpos('" . shellescape('.') . "',[line('.'),     0, 0, 0])"})
 
   " Jump to the selected match
   if !empty(selected)
