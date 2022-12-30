@@ -1,4 +1,6 @@
-nnoremap <Leader>g : call fzf#run({ 'source': 'grep -R --line-number  ".*"', 'sink':function( '<sid>sinkFunction'),})<CR><CR>
+function! StringJump()
+	call fzf#run({'source': 'grep -R --line-number ".*", 'sink':function('<sid>sinkFunction'),})<CR>
+endfunction
 
 function! s:sinkFunction(result)
 	let filePAth = split(a:result, ':')
