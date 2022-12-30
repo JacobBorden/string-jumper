@@ -12,6 +12,8 @@
 "   - Alternatively, you can manually install the plugin by copying the
 "     string-jumper.vim file to your Neovim configuration directory.
 "
+command! StringJump call StringJump()
+
 function! StringJump()
 	call fzf#run({'source': 'grep -R --line-number ".*"', 'sink':function('s:sinkFunction'),})
 endfunction
