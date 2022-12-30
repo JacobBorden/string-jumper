@@ -1,5 +1,5 @@
 function! StringJump()
-	call fzf#run({'source': 'grep -R --line-number ".*"', 'sink':function('sinkFunction'),})
+	call fzf#run({'source': 'grep -R --line-number ".*"', 'sink':function('s:sinkFunction'),})
 endfunction
 
 function! s:sinkFunction(result)
