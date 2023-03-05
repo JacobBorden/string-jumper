@@ -15,7 +15,7 @@
 command! StringJump call StringJump()
 
 function! StringJump()
-	call fzf#run({'source': 'grep -R --line-number ".*"', 'sink':function('s:sinkFunction'),'options':'--preview --height 75%'})
+	call fzf#run({'source': 'grep -R --line-number ".*"', 'sink':function('s:sinkFunction'),'options':'--preview'})
 endfunction
 
 function! s:sinkFunction(result)
