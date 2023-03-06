@@ -15,7 +15,7 @@
 command! StringJump call StringJump()
 
 function! StringJump()
-	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat --style=numbers --color=always {1} | sed \"s/^\([^:]*\):\d\+:/\1:/\""', 'sink':function('s:sinkFunction')})
+	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat --style=numbers --color=always {1}"', 'sink':function('s:sinkFunction')})
 endfunction
 
 function! s:sinkFunction(result)
