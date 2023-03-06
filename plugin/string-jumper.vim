@@ -14,6 +14,8 @@
 "
 command! StringJump call StringJump()
 
+let g:filePath= ""
+
 function! StringJump()
 	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat '. g:filePath[1] . ' "', 'sink':function('s:sinkFunction')})
 endfunction
