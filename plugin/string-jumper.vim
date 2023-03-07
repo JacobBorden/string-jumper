@@ -17,14 +17,15 @@
 
 command! StringJump call StringJump()
 
-let s:filePath = ""
+let s:previewPath = ""
 
 function! StringJump()
-	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat '. s:filePath[1] . ' "', 'sink':function('SinkFunction')})
+	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat '. s:previewPath . ' "', 'sink':function('SinkFunction')})
 endfunction
 
 function! SinkFunction(result)
 	let s:filePath = split(a:result, ':')
+	let s:previewPath = s:filePath[1]
 	exec 'edit +' . s:filePath[1] . ' ' . s:filePath[0]
 endfunction
 
