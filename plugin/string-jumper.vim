@@ -12,7 +12,13 @@
 "   - Alternatively, you can manually install the plugin by copying the
 "     string-jumper.vim file to your Neovim configuration directory.
 "
+
+
+
 command! StringJump call StringJump()
+
+let s:filePath = ""
+
 function! StringJump()
 	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat '. s:filePath[1] . ' "', 'sink':function('SinkFunction')})
 endfunction
