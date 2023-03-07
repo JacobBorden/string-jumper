@@ -25,7 +25,7 @@ endfunction
 
 function! SinkFunction(result)
 	let s:filePath = split(a:result, ':')
-	let s:previewPath = s:filePath[1]
+	let s:previewPath = s:filePath[0]
 	exec 'edit +' . s:filePath[1] . ' ' . s:filePath[0]
 endfunction
 
