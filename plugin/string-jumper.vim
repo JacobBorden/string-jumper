@@ -20,7 +20,7 @@ command! StringJump call StringJump()
 let s:previewPath = ""
 
 function! StringJump()
-	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat --color=always --highlightline {2} '. s:previewPath . ' "', 'sink':function('SinkFunction')})
+	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat --color=always --highlight-line {2} '. s:previewPath . ' "', 'sink':function('SinkFunction')})
 endfunction
 
 function! SinkFunction(result)
