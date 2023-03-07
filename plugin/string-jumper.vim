@@ -18,7 +18,7 @@
 command! StringJump call StringJump()
 
 let s:previewPath = ""
-
+let s:previewLine = ""
 function! StringJump()
 	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat --color=always --highlight-line {} '. s:previewPath . ' "', 'sink':function('SinkFunction')})
 endfunction
@@ -26,6 +26,7 @@ endfunction
 function! SinkFunction(result)
 	let s:filePath = split(a:result, ':')
 	let s:previewPath = s:filePath[0]
+	let s:previewLine = s:filePath[1]
 	exec 'edit +' . s:filePath[1] . ' ' . s:filePath[0]
 endfunction
 
