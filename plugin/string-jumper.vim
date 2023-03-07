@@ -18,7 +18,7 @@ function! StringJump()
 endfunction
 
 function! SinkFunction(result)
-	let g:filePath = split(a:result, ':')
-	exec 'edit +' . g:filePath[1] . ' ' . g:filePath[0]
+	let s:filePath = split(a:result, ':')
+	exec 'edit +' . s:filePath[1] . ' ' . s:filePath[0]
 endfunction
 
