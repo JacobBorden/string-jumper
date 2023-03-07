@@ -15,10 +15,10 @@
 command! StringJump call StringJump()
 let g:filePath = ""
 function! StringJump()
-	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat '. g:filePath[1] . ' "', 'sink':function('s:sinkFunction')})
+	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat '. g:filePath[1] . ' "', 'sink':function('sinkFunction')})
 endfunction
 
-function! s:sinkFunction(result)
+function! sinkFunction(result)
 	let g:filePath = split(a:result, ':')
 	exec 'edit +' . g:filePath[1] . ' ' . g:filePath[0]
 endfunction
