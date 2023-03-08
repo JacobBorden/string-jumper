@@ -19,7 +19,7 @@ command! StringJump call StringJump()
 
 
 function! Callback(selected)
-let s:file_path = split(a:selected[], ':')
+let s:file_path = split(a:selected['data'], ':')
 
 let preview_command ='--preview "bat --color=always ' . s:file_path[0] . ' --highlight-line ' . s:file_path[1].'"'
 return preview_command
@@ -27,7 +27,7 @@ endfunction
 
 function! StringJump()
 	let result = system('grep -R --line-number ".*"')
-call fzf#run({'source': 'echo '. string(result), 'options':  Callback({}),  'sink': function('SinkFunction'), 'preview-window': 'wrap'})
+call fzf#run({'source': 'echo '. string(result), 'options':  Callback({'data': result}),  'sink': function('SinkFunction'), 'preview-window': 'wrap'})
 
 endfunction
 
