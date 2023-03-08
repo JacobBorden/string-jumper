@@ -18,8 +18,14 @@
 command! StringJump call StringJump()
 
 function! StringJump()
-	let file_path = {}
-	call fzf#run({'source': 'grep -R --line-number ".*"', 'options':'--preview "bat --color=always '. split(file_path['source'],':')[0] .'"', 'sink':function('SinkFunction')})
+	let result = system('grep -R --line-number ".*"')
+
+let [file_path, line_number, matched_text] = split(result, ':')
+
+let preview_command = 'bat --color=always ' . file_path
+
+call fzf#run({'source': 'echo '. string(result), 'options': '--preview "' . preview_command . ' --line-range ' . line_number . ' ' . file_path . ' | head -100"',  'sink': function('SinkFunction')})
+
 endfunction
 
 function! SinkFunction(result)
