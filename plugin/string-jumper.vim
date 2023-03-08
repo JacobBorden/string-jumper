@@ -17,14 +17,17 @@
 
 command! StringJump call StringJump()
 
-function! StringJump()
-	let result = system('grep -R --line-number ".*"')
 
+function! Callback(selected)
 let file_path = split(result, ':')
 
 let preview_command = 'bat --color=always ' . file_path[0] . ' --highlight-line ' . file_path[1]
+return preview_command
+endfunction
 
-call fzf#run({'source': 'echo '. string(result), 'options': '--preview "' . preview_command . '"',  'sink': function('SinkFunction'), 'preview-window': 'wrap'})
+function! StringJump()
+	let result = system('grep -R --line-number ".*"')
+call fzf#run({'source': 'echo '. string(result), 'options': '--preview "Callback {}"',  'sink': function('SinkFunction'), 'preview-window': 'wrap'})
 
 endfunction
 
