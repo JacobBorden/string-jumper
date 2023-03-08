@@ -27,7 +27,7 @@ endfunction
 
 function! StringJump()
 	let result = system('grep -R --line-number ".*"')
-call fzf#run({'source': 'echo '. string(result), 'options':  Callback({'data': '{}'}),  'sink': function('SinkFunction'), 'preview-window': 'wrap'})
+call fzf#run({'source': 'echo '. string(result), 'options':  Callback({'data': result}),  'sink': function('SinkFunction'), 'preview-window': 'wrap'})
 
 endfunction
 
