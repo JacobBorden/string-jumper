@@ -20,7 +20,7 @@ command! StringJump call StringJump()
 function! StringJump()
 	let result = system('grep -R --line-number ".*"')
 
-let filw_path = split(result, ':')
+let file_path = split(result, ':')
 
 let preview_command = 'bat --color=always ' . file_path[0]
 
