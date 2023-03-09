@@ -19,7 +19,8 @@ command! StringJump call StringJump()
 
 
 function! Callback(selected)
-let s:file_path = split(a:selected['data'], ':')
+let s:selection = copy(a:selected)
+let s:file_path = split(s:selection['data'], ':')
 
 let preview_command ='--preview "bat --color=always ' . s:file_path[0] . ' --highlight-line ' . s:file_path[1].'"'
 return preview_command
