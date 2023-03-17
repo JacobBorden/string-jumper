@@ -20,7 +20,7 @@ command! StringJump call StringJump()
 
 function! Callback(selected)
 let s:file_path = split(a:selected, ':')
-let preview_command ='--preview "bat --color=always ' . s:file_path[0] . ' --highlight-line ' . s:file_path[1].'"'
+let preview_command = '--preview "bat --color=always {1} --highlight-line {2}" --preview-window=right:60%:wrap --delimiter=:' 
 return preview_command
 endfunction
 
