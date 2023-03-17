@@ -19,6 +19,7 @@ command! StringJump call StringJump()
 
 
 function! Callback(selected)
+let context_lines = 10 
 let preview_command = '--preview "((tail -n +"((LNUM=' . "({2}" . '-' . context_lines . ')>0?(' . "({2}" . '-' . context_lines . '):1))" . ' {1}) | head -n ' . (context_lines * 2 + 1) . ') | bat --color=always --highlight-line=' . context_lines . ' --style=changes --decorations=never" --preview-window=right:60%:wrap --delimiter=:'
 
 return preview_command
